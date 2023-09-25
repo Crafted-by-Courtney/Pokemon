@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/pokemon', (req, res) => {
-    res.json(pokemon);
+    res.render('Index');
   });
 
 // Start the server and listen on the specified port
