@@ -19,7 +19,7 @@ class Index extends React.Component  {
         {pokemon.map((poke, index) => (
           <li key={index}>
             <img src={poke.img} alt={poke.name} />
-            <p>Name: {capitalizeFirstLetter(poke.name)}</p>
+            <a href={`/pokemon/${index}`}>{capitalizeFirstLetter(poke.name)}</a>
           </li>
         ))}
       </ul>
