@@ -26,6 +26,10 @@ app.get('/pokemon', (req, res) => {
   res.render('Index', { pokemon: pokemon });
 });
 
+app.get('/pokemon/new', (req, res)=>{
+  res.render('New');
+});
+
 app.get('/pokemon/:id', (req, res) => {
   const { id } = req.params;
   const parsedId = parseInt(id);
@@ -37,6 +41,14 @@ app.get('/pokemon/:id', (req, res) => {
     // Render the 'Show' view (Show.jsx) and pass the 'pokemon' data and 'id'
     res.render('Show', { pokemon: pokemon, id: parsedId });
   }
+});
+
+app.post('/pokemon', (req, res) => {
+  const { name } = req.body;
+  const img = `http://img.pokemondb.net/artwork/${name}`;
+  const newPokemon = { name, img };
+  console.log('New Pokemon Data:', newPokemon);
+  res.redirect('/pokemon'); // Redirect to the Pokemon list page
 });
 
 app.listen(port, () => {
